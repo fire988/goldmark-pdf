@@ -40,15 +40,15 @@ func main() {
 
 func generateConstants(fonts *webfonts.WebfontList) error {
 	// Generate our fonts.go file
-	f := jen.NewFilePathName("github.com/stephenafamo/goldmark-pdf", "pdf")
+	f := jen.NewFilePathName("github.com/fire988/goldmark-pdf", "pdf")
 
 	f.HeaderComment("Code generated, DO NOT EDIT.")
 	// f.HeaderComment("// +build google")
-	f.ImportName("github.com/stephenafamo/fonts", "fonts")
+	f.ImportName("github.com/fire988/fonts", "fonts")
 
-	gTextFonts := f.Var().Id("TextFontsGoogle").Op("=").Map(jen.String()).Qual("github.com/stephenafamo/goldmark-pdf", "Font")
+	gTextFonts := f.Var().Id("TextFontsGoogle").Op("=").Map(jen.String()).Qual("github.com/fire988/goldmark-pdf", "Font")
 	f.Line()
-	gCodeFonts := f.Var().Id("CodeFontsGoogle").Op("=").Map(jen.String()).Qual("github.com/stephenafamo/goldmark-pdf", "Font")
+	gCodeFonts := f.Var().Id("CodeFontsGoogle").Op("=").Map(jen.String()).Qual("github.com/fire988/goldmark-pdf", "Font")
 	f.Line()
 
 	bodyFonts := make(jen.Dict)
@@ -96,7 +96,7 @@ func generateConstants(fonts *webfonts.WebfontList) error {
 		variableName := "Font" + family
 
 		f.Var().Id(variableName).Op("=").
-			Qual("github.com/stephenafamo/goldmark-pdf", "Font").Values(jen.Dict{
+			Qual("github.com/fire988/goldmark-pdf", "Font").Values(jen.Dict{
 			jen.Id("CanUseForText"): jen.Lit(canUseForText),
 			jen.Id("CanUseForCode"): jen.Lit(canUseForCode),
 
@@ -108,19 +108,19 @@ func generateConstants(fonts *webfonts.WebfontList) error {
 			jen.Id("FileBold"):       jen.Lit(bold),
 			jen.Id("FileBoldItalic"): jen.Lit(boldItalic),
 
-			jen.Id("Type"): jen.Qual("github.com/stephenafamo/goldmark-pdf", "FontTypeGoogle"),
+			jen.Id("Type"): jen.Qual("github.com/fire988/goldmark-pdf", "FontTypeGoogle"),
 		})
 		f.Line()
 
 		if canUseForText {
-			key := jen.Qual("github.com/stephenafamo/goldmark-pdf", variableName+".Family")
-			val := jen.Qual("github.com/stephenafamo/goldmark-pdf", variableName)
+			key := jen.Qual("github.com/fire988/goldmark-pdf", variableName+".Family")
+			val := jen.Qual("github.com/fire988/goldmark-pdf", variableName)
 			bodyFonts[key] = val
 		}
 
 		if canUseForCode {
-			key := jen.Qual("github.com/stephenafamo/goldmark-pdf", variableName+".Family")
-			val := jen.Qual("github.com/stephenafamo/goldmark-pdf", variableName)
+			key := jen.Qual("github.com/fire988/goldmark-pdf", variableName+".Family")
+			val := jen.Qual("github.com/fire988/goldmark-pdf", variableName)
 			codeFonts[key] = val
 		}
 	}
