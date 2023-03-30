@@ -3,7 +3,7 @@ package gopdf
 import (
 	"context"
 
-	pdf "github.com/fire988/goldmark-pdf"
+	pdf "github.com/stephenafamo/goldmark-pdf"
 	"github.com/signintech/gopdf"
 )
 
