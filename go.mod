@@ -1,4 +1,4 @@
-module github.com/stephenafamo/goldmark-pdf
+module github.com/fire988/goldmark-pdf
 
 go 1.16
 
